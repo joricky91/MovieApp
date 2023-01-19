@@ -18,7 +18,7 @@ struct MoviePoster: View {
             Text("Loading image")
         })
         .cornerRadius(5)
-        .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2)
+        .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 2)
     }
 }
 

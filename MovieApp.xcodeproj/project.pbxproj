@@ -15,6 +15,7 @@
 		5111EAE82979317900CEB534 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111EAE72979317900CEB534 /* NetworkManager.swift */; };
 		5111EAEA2979336D00CEB534 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111EAE92979336D00CEB534 /* MovieViewModel.swift */; };
 		5111EAEC2979359E00CEB534 /* MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111EAEB2979359E00CEB534 /* MoviePoster.swift */; };
+		5111EAEE297939C600CEB534 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111EAED297939C600CEB534 /* MovieDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		5111EAE72979317900CEB534 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5111EAE92979336D00CEB534 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		5111EAEB2979359E00CEB534 /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
+		5111EAED297939C600CEB534 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				5111EAEB2979359E00CEB534 /* MoviePoster.swift */,
+				5111EAED297939C600CEB534 /* MovieDetails.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5111EAE82979317900CEB534 /* NetworkManager.swift in Sources */,
+				5111EAEE297939C600CEB534 /* MovieDetails.swift in Sources */,
 				5111EAEA2979336D00CEB534 /* MovieViewModel.swift in Sources */,
 				5111EAD6297926AE00CEB534 /* ContentView.swift in Sources */,
 				5111EAD4297926AE00CEB534 /* MovieAppApp.swift in Sources */,
