@@ -11,14 +11,15 @@ struct ContentView: View {
     @EnvironmentObject var vm: MovieViewModel
     
     var body: some View {
-        VStack {
+        NavigationView {
             List(vm.movie, id: \.id) { movie in
-                Text(movie.title)
+                MoviePoster(imageURL: "https://image.tmdb.org/t/p/w1280/\(movie.poster)")
             }
-        }
-        .padding()
-        .onAppear {
-            vm.getMovieData()
+            .listStyle(PlainListStyle())
+            .onAppear {
+                vm.getMovieData()
+            }
+            .navigationTitle("Movie")
         }
     }
 }
