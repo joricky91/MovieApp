@@ -12,8 +12,8 @@ class NetworkManager {
         guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if error != nil {
-                fatalError("Cannot fetch data")
+            if let error = error {
+                print(error)
             }
             
             guard let data = data else { return }
@@ -21,10 +21,10 @@ class NetworkManager {
             do {
                 let decodedData = try JSONDecoder().decode(MovieResponse.self, from: data)
                 DispatchQueue.main.async {
-                    completion(decodedData.response)
+                    completion(decodedData.results)
                 }
             } catch {
-                fatalError("Cannot fetch data")
+                print(error)
             }
         }
         .resume()

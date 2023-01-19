@@ -12,6 +12,7 @@ struct MovieAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(MovieViewModel())
         }
     }
 }
