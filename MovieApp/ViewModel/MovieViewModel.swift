@@ -40,4 +40,14 @@ class MovieViewModel: ObservableObject {
             self.movieDetails = movie
         }
     }
+    
+    func arrangeMovieGenresInHorizontalText() -> String {
+        var joinedWords = ""
+        
+        self.movieDetails?.genres?.forEach({ genre in
+            joinedWords.append("\(genre.name), ")
+        })
+        
+        return joinedWords
+    }
 }

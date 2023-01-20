@@ -10,6 +10,7 @@ import SwiftUI
 struct MovieDetails: View {
     @EnvironmentObject var vm: MovieViewModel
     var movieID: Int = 0
+    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,18 +28,14 @@ struct MovieDetails: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 5)
                 
-                Text("Release Date: \(vm.movieDetails?.releaseDate ?? "")")
-                
-                Text("Runtime: \(vm.movieDetails?.runtime ?? 0) minutes")
-                    .padding(.bottom, 5)
-                
-                HStack {
-                    Text("Genres: ")
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Release Date: \(vm.movieDetails?.releaseDate ?? "")")
                     
-                    ForEach((vm.movieDetails?.genres ?? []), id: \.id) { genre in
-                        Text(genre.name)
-                    }
-                }.frame(height: 80)
+                    Text("Runtime: \(vm.movieDetails?.runtime ?? 0) minutes")
+                    
+                    Text("Genres: \(vm.arrangeMovieGenresInHorizontalText())")
+                        .padding(.bottom, 5)
+                }
                 
                 Text(vm.movieDetails?.overview ?? "")
             }
