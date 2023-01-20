@@ -8,13 +8,55 @@
 import SwiftUI
 
 struct MovieDetails: View {
+    @EnvironmentObject var vm: MovieViewModel
+    var movieID: Int = 0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w1000_and_h563_face/\(vm.movieDetails?.backdrop ?? "")"), content: { image in
+                image
+                    .resizable()
+            }, placeholder: {
+                Text("Loading image")
+            })
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.8)
+            
+            VStack(alignment: .leading) {
+                Text(vm.movieDetails?.title ?? "")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 5)
+                
+                Text("Release Date: \(vm.movieDetails?.releaseDate ?? "")")
+                
+                Text("Runtime: \(vm.movieDetails?.runtime ?? 0) minutes")
+                    .padding(.bottom, 5)
+                
+                HStack {
+                    Text("Genres: ")
+                    
+                    ForEach((vm.movieDetails?.genres ?? []), id: \.id) { genre in
+                        Text(genre.name)
+                    }
+                }.frame(height: 80)
+                
+                Text(vm.movieDetails?.overview ?? "")
+            }
+            .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            vm.getMovieDetails(movieID: movieID)
+        }
     }
 }
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
         MovieDetails()
+            .environmentObject(MovieViewModel())
     }
 }
