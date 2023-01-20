@@ -9,22 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var vm: MovieViewModel
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(vm.movie, id: \.id) { movie in
-                        NavigationLink(destination: {
-                            MovieDetails()
-                        }, label: {
+            VStack(alignment: .leading) {
+                Text("Now Playing")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 16) {
+                        ForEach(vm.movie, id: \.id) { movie in
                             MoviePoster(imageURL: "https://image.tmdb.org/t/p/w1280/\(movie.poster)")
-                                .padding()
-                        })
+                        }
                     }
                 }
                 .onAppear {
@@ -32,6 +29,7 @@ struct ContentView: View {
                 }
                 .navigationTitle("Movie")
             }
+            .padding(.leading)
         }
     }
 }
