@@ -23,6 +23,7 @@ struct MoviePoster: View {
             .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 2)
             
             Text(movieTitle)
+                .multilineTextAlignment(.leading)
                 .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 8, alignment: .topLeading)
         }
     }

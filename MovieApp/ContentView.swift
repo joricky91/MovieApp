@@ -14,46 +14,11 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("Now Playing")
-                        .font(.title2)
-                        .fontWeight(.bold)
+                    MovieScrollViewComponent(movie: vm.movie, title: "Now Playing")
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(vm.movie, id: \.id) { movie in
-                                NavigationLink(destination: MovieDetails(movieID: movie.id)) {
-                                    MoviePoster(imageURL: "https://image.tmdb.org/t/p/w1280/\(movie.poster)", movieTitle: movie.title)
-                                        .foregroundColor(.black)
-                                }
-                            }
-                        }
-                    }
-                    .padding(.bottom)
-                    
-                    Text("Upcoming")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(vm.upcoming, id: \.id) { movie in
-                                MoviePoster(imageURL: "https://image.tmdb.org/t/p/w1280/\(movie.poster)", movieTitle: movie.title)
-                            }
-                        }
-                    }
-                    .padding(.bottom)
+                    MovieScrollViewComponent(movie: vm.upcoming, title: "Upcoming")
   
-                    Text("Top Rated")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(vm.topRated, id: \.id) { movie in
-                                MoviePoster(imageURL: "https://image.tmdb.org/t/p/w1280/\(movie.poster)", movieTitle: movie.title)
-                            }
-                        }
-                    }
+                    MovieScrollViewComponent(movie: vm.topRated, title: "Top Rated")
                     
                 }
                 .onAppear {
