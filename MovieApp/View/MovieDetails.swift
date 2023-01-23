@@ -13,20 +13,23 @@ struct MovieDetails: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Text(vm.movieDetails?.title ?? "")
+                .font(.title2)
+                .fontWeight(.bold)
+                .padding(.horizontal)
+            
             AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w1000_and_h563_face/\(vm.movieDetails?.backdrop ?? "")"), content: { image in
                 image
                     .resizable()
             }, placeholder: {
                 Text("Loading image")
             })
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 1.8)
+            .cornerRadius(10)
+            .frame(height: UIScreen.main.bounds.width / 1.8)
+            .padding(.horizontal)
+            
             
             VStack(alignment: .leading) {
-                Text(vm.movieDetails?.title ?? "")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 5)
-                
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Release Date: \(vm.movieDetails?.releaseDate ?? "")")
                     
