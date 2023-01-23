@@ -12,6 +12,7 @@ class MovieViewModel: ObservableObject {
     @Published var upcoming: [Movie] = []
     @Published var topRated: [Movie] = []
     @Published var movieDetails: Movie?
+    @Published var searchedMovies: [Movie] = []
     var network = NetworkManager()
     var nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=dd961bfa9a816030820499683fe54a36"
     var upcomingURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=dd961bfa9a816030820499683fe54a36"
@@ -38,6 +39,12 @@ class MovieViewModel: ObservableObject {
     func getMovieDetails(movieID: Int) {
         network.fetchMovieDetails(url: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=dd961bfa9a816030820499683fe54a36") { movie in
             self.movieDetails = movie
+        }
+    }
+    
+    func getMovieDataFromSearch(searchText: String) {
+        network.fetchAPI(url: "https://api.themoviedb.org/3/search/movie?api_key=dd961bfa9a816030820499683fe54a36&language=en-US&query=\(searchText)") { movie in
+            self.searchedMovies = movie
         }
     }
     

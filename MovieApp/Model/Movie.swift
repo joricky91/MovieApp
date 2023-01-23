@@ -11,12 +11,12 @@ struct MovieResponse: Codable {
     var results: [Movie]
 }
 
-struct Movie: Codable {
+struct Movie: Codable, Identifiable {
     let id: Int
     let title: String
     let releaseDate: String
     let backdrop: String?
-    let poster: String
+    let poster: String?
     let language: String
     let overview: String
     let runtime: Int?
