@@ -17,7 +17,7 @@ struct MoviePoster: View {
                 image
                     .resizable()
             }, placeholder: {
-                Text("Loading image")
+                Color.gray
             })
             .cornerRadius(5)
             .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 2)
