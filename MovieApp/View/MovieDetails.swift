@@ -10,7 +10,6 @@ import SwiftUI
 struct MovieDetails: View {
     @EnvironmentObject var vm: MovieViewModel
     var movieID: Int = 0
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         VStack(alignment: .leading) {

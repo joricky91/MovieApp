@@ -8,7 +8,7 @@
 import Foundation
 
 class MovieViewModel: ObservableObject {
-    @Published var movie: [Movie] = []
+    @Published var nowPlaying: [Movie] = []
     @Published var upcoming: [Movie] = []
     @Published var topRated: [Movie] = []
     @Published var movieDetails: Movie?
@@ -18,33 +18,68 @@ class MovieViewModel: ObservableObject {
     var upcomingURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=dd961bfa9a816030820499683fe54a36"
     var topRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=dd961bfa9a816030820499683fe54a36"
     
-    func getMovieData() {
-        network.fetchAPI(url: nowPlayingURL) { movie in
-            self.movie = movie
+    func getNowPlayingMovie() {
+        network.fetchMovieDataFromAPI(url: nowPlayingURL, expecting: MovieResponse.self) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.nowPlaying = movie.results
+                }
+            }
         }
     }
     
     func getUpcomingMovie() {
-        network.fetchAPI(url: upcomingURL) { movie in
-            self.upcoming = movie
+        network.fetchMovieDataFromAPI(url: upcomingURL, expecting: MovieResponse.self) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.upcoming = movie.results
+                }
+            }
         }
     }
     
     func getTopRatedMovie() {
-        network.fetchAPI(url: topRatedURL) { movie in
-            self.topRated = movie
+        network.fetchMovieDataFromAPI(url: topRatedURL, expecting: MovieResponse.self) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.topRated = movie.results
+                }
+            }
         }
     }
     
     func getMovieDetails(movieID: Int) {
-        network.fetchMovieDetails(url: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=dd961bfa9a816030820499683fe54a36") { movie in
-            self.movieDetails = movie
+        network.fetchMovieDataFromAPI(url: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=dd961bfa9a816030820499683fe54a36", expecting: Movie.self) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.movieDetails = movie
+                }
+            }
         }
     }
     
     func getMovieDataFromSearch(searchText: String) {
-        network.fetchAPI(url: "https://api.themoviedb.org/3/search/movie?api_key=dd961bfa9a816030820499683fe54a36&language=en-US&query=\(searchText)") { movie in
-            self.searchedMovies = movie
+        network.fetchMovieDataFromAPI(url: "https://api.themoviedb.org/3/search/movie?api_key=dd961bfa9a816030820499683fe54a36&language=en-US&query=\(searchText)", expecting: MovieResponse.self) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.searchedMovies = movie.results
+                }
+            }
         }
     }
     

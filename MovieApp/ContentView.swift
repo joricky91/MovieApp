@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
-                    MovieScrollViewComponent(movie: vm.movie, title: "Now Playing")
+                    MovieScrollViewComponent(movie: vm.nowPlaying, title: "Now Playing")
                     
                     MovieScrollViewComponent(movie: vm.upcoming, title: "Upcoming")
   
@@ -22,7 +22,7 @@ struct ContentView: View {
                     
                 }
                 .onAppear {
-                    vm.getMovieData()
+                    vm.getNowPlayingMovie()
                     vm.getUpcomingMovie()
                     vm.getTopRatedMovie()
                 }
