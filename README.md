@@ -36,3 +36,4 @@ func fetchMovieDataFromAPI<T: Codable>(url: String, expecting: T.Type ,completio
 ```
 I used generics that conforms to the Codable protocol, so I could fetch any data from any API I want.
 
+This project is also built using programmatic UIKit. To view that version, [click here](https://github.com/joricky91/Movie-App-UIKit-Programmatically).
