@@ -1,4 +1,4 @@
-# Movie App using TMDB API
+# Movie App using TMDB API (SwiftUI Version)
 This is a project I created to train and learn how to fetch data from API. This app features:
 - List of Now Playing, Upcoming, and Top Rated movies.
 - Movie details for each movie.
@@ -36,3 +36,4 @@ func fetchMovieDataFromAPI<T: Codable>(url: String, expecting: T.Type ,completio
 ```
 I used generics that conforms to the Codable protocol, so I could fetch any data from any API I want.
 
+This project is also built using programmatic UIKit. To view that version, [click here](https://github.com/joricky91/Movie-App-UIKit-Programmatically).
