@@ -16,12 +16,9 @@ class MovieViewModel: ObservableObject {
     @Published var searchedMovies: [Movie] = []
     @Published var videos: [Videos] = []
     var network = NetworkManager()
-    var nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=dd961bfa9a816030820499683fe54a36"
-    var upcomingURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=dd961bfa9a816030820499683fe54a36"
-    var topRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=dd961bfa9a816030820499683fe54a36"
     
     func getNowPlayingMovie() {
-        network.fetchMovieDataFromAPI(url: nowPlayingURL, expecting: MovieResponse.self) { [weak self] result in
+        network.fetchMovieDataFromAPI(url: APILinks.nowPlayingURL, expecting: MovieResponse.self) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -34,7 +31,7 @@ class MovieViewModel: ObservableObject {
     }
      
     func getUpcomingMovie() {
-        network.fetchMovieDataFromAPI(url: upcomingURL, expecting: MovieResponse.self) { [weak self] result in
+        network.fetchMovieDataFromAPI(url: APILinks.upcomingURL, expecting: MovieResponse.self) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -47,7 +44,7 @@ class MovieViewModel: ObservableObject {
     }
     
     func getTopRatedMovie() {
-        network.fetchMovieDataFromAPI(url: topRatedURL, expecting: MovieResponse.self) { [weak self] result in
+        network.fetchMovieDataFromAPI(url: APILinks.topRatedURL, expecting: MovieResponse.self) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -60,7 +57,7 @@ class MovieViewModel: ObservableObject {
     }
     
     func getMovieDetails(movieID: Int) {
-        network.fetchMovieDataFromAPI(url: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=dd961bfa9a816030820499683fe54a36", expecting: Movie.self) { [weak self] result in
+        network.fetchMovieDataFromAPI(url: "\(APILinks.baseURL)\(movieID)?\(APILinks.apiKey)", expecting: Movie.self) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -74,7 +71,7 @@ class MovieViewModel: ObservableObject {
     }
     
     func getMovieDataFromSearch(searchText: String) {
-        network.fetchMovieDataFromAPI(url: "https://api.themoviedb.org/3/search/movie?api_key=dd961bfa9a816030820499683fe54a36&language=en-US&query=\(searchText)", expecting: MovieResponse.self) { [weak self] result in
+        network.fetchMovieDataFromAPI(url: "\(APILinks.searchURL)\(searchText)", expecting: MovieResponse.self) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -87,7 +84,7 @@ class MovieViewModel: ObservableObject {
     }
     
     func getMovieVideos(movieID: Int) {
-        network.fetchMovieDataFromAPI(url: "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=dd961bfa9a816030820499683fe54a36", expecting: VideoResponse.self) { [weak self] result in
+        network.fetchMovieDataFromAPI(url: "\(APILinks.baseURL)\(movieID)/videos?\(APILinks.apiKey)", expecting: VideoResponse.self) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)

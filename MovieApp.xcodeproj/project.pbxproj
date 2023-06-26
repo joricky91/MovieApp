@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510356012A4977AC00EDF13C /* APILinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510356002A4977AC00EDF13C /* APILinks.swift */; };
 		5111EAD4297926AE00CEB534 /* MovieAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111EAD3297926AE00CEB534 /* MovieAppApp.swift */; };
 		5111EAD6297926AE00CEB534 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5111EAD5297926AE00CEB534 /* ContentView.swift */; };
 		5111EAD8297926B000CEB534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5111EAD7297926B000CEB534 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		510356002A4977AC00EDF13C /* APILinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILinks.swift; sourceTree = "<group>"; };
 		5111EAD0297926AE00CEB534 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5111EAD3297926AE00CEB534 /* MovieAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppApp.swift; sourceTree = "<group>"; };
 		5111EAD5297926AE00CEB534 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,7 +76,6 @@
 				5111EAE2297926C600CEB534 /* View */,
 				5111EAE3297926D600CEB534 /* ViewModel */,
 				5111EAD3297926AE00CEB534 /* MovieAppApp.swift */,
-				5111EAD5297926AE00CEB534 /* ContentView.swift */,
 				5111EAD7297926B000CEB534 /* Assets.xcassets */,
 				5111EAD9297926B000CEB534 /* Preview Content */,
 			);
@@ -106,6 +107,7 @@
 				5111EAEF297C281700CEB534 /* MovieScrollViewComponent.swift */,
 				5111EAF1297E577200CEB534 /* TabBarView.swift */,
 				5111EAF3297E57A300CEB534 /* SearchView.swift */,
+				5111EAD5297926AE00CEB534 /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				5111EAE72979317900CEB534 /* NetworkManager.swift */,
+				510356002A4977AC00EDF13C /* APILinks.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				5111EAE82979317900CEB534 /* NetworkManager.swift in Sources */,
 				5111EAF2297E577200CEB534 /* TabBarView.swift in Sources */,
 				5111EAEE297939C600CEB534 /* MovieDetails.swift in Sources */,
+				510356012A4977AC00EDF13C /* APILinks.swift in Sources */,
 				5111EAEA2979336D00CEB534 /* MovieViewModel.swift in Sources */,
 				5111EAD6297926AE00CEB534 /* ContentView.swift in Sources */,
 				5111EAD4297926AE00CEB534 /* MovieAppApp.swift in Sources */,
