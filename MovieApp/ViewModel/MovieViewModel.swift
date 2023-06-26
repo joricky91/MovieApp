@@ -32,7 +32,7 @@ class MovieViewModel: ObservableObject {
             }
         }
     }
-    
+     
     func getUpcomingMovie() {
         network.fetchMovieDataFromAPI(url: upcomingURL, expecting: MovieResponse.self) { [weak self] result in
             switch result {
