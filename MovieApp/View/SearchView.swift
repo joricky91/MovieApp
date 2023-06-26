@@ -19,9 +19,9 @@ struct SearchView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(results, id: \.id) { movie in
-                NavigationLink(destination: MovieDetails(movieID: movie.id)) {
+                NavigationLink(value: movie.id) {
                     Text(movie.title)
                 }
             }
@@ -31,6 +31,9 @@ struct SearchView: View {
                 vm.getMovieDataFromSearch(searchText: searchText)
             }
             .navigationTitle("Search")
+            .navigationDestination(for: Int.self) { movie in
+                MovieDetails(movieID: movie)
+            }
         }
     }
 }

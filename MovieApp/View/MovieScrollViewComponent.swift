@@ -21,7 +21,7 @@ struct MovieScrollViewComponent: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(movie, id: \.id) { movie in
-                        NavigationLink(destination: MovieDetails(movieID: movie.id)) {
+                        NavigationLink(value: movie.id) {
                             MoviePoster(imageURL: "https://image.tmdb.org/t/p/w1280/\(movie.poster ?? "")", movieTitle: movie.title)
                                 .foregroundColor(colorScheme == .light ? .black : .white)
                         }

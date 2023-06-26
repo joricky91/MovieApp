@@ -8,6 +8,7 @@
 import Foundation
 
 class MovieViewModel: ObservableObject {
+    
     @Published var nowPlaying: [Movie] = []
     @Published var upcoming: [Movie] = []
     @Published var topRated: [Movie] = []
@@ -65,6 +66,7 @@ class MovieViewModel: ObservableObject {
                 print(error)
             case .success(let movie):
                 DispatchQueue.main.async {
+                    self?.movieDetails = nil
                     self?.movieDetails = movie
                 }
             }

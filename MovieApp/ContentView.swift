@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var vm: MovieViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
                     MovieScrollViewComponent(movie: vm.nowPlaying, title: "Now Playing")
@@ -28,7 +28,10 @@ struct ContentView: View {
                 }
                 .padding(.leading)
                 .padding(.top)
-                .navigationTitle("Movie")
+            }
+            .navigationTitle("Movie")
+            .navigationDestination(for: Int.self) { movie in
+                MovieDetails(movieID: movie)
             }
         }
     }
